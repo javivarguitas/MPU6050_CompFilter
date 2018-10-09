@@ -1,3 +1,9 @@
+/*  Obtención del angulo del MPU6050 aplicando un flitro complementario
+    Autor: Javier Vargas
+    Basado en Robologs --> https://robologs.net/
+    https://creativecommons.org/licenses/by/4.0/
+*/
+
 #include "MPU6050_CompFilter.h"
 
 //Constantes a dividir para obtener un valor coherente

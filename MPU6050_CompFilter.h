@@ -1,3 +1,9 @@
+/*  Obtención del angulo del MPU6050 aplicando un flitro complementario
+    Autor: Javier Vargas
+    Basado en Robologs --> https://robologs.net/
+    https://creativecommons.org/licenses/by/4.0/
+*/
+
 #ifndef _MPU6050_CompFilter_h
 #define _MPU6050_CompFilter_h
 

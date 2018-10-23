@@ -10,6 +10,14 @@
 #include "Wire.h"
 #include "Arduino.h"
 
+#define MPU6050_RA_XA_OFFS_H        0x06 //[15:0] XA_OFFS
+#define MPU6050_RA_YA_OFFS_H        0x08 //[15:0] YA_OFFS
+#define MPU6050_RA_ZA_OFFS_H        0x0A //[15:0] ZA_OFFS
+
+#define MPU6050_RA_XG_OFFS_USRH     0x13 //[15:0] XG_OFFS_USR
+#define MPU6050_RA_YG_OFFS_USRH     0x15 //[15:0] YG_OFFS_USR
+#define MPU6050_RA_ZG_OFFS_USRH     0x17 //[15:0] ZG_OFFS_USR
+
 class MPU6050_CompFilter {
 
 private:
@@ -24,7 +32,8 @@ float Gy[3];
 float Angle[3];
 float AngleAnt[2];
 float VelAngle[2];
-
+void writeWord(uint8_t regAddr, uint8_t length, int16_t *data);
+void ReadReg();
 public:
     MPU6050_CompFilter(int direccion);
     void Iniciar(float t_muestreo); //Inicia las comunicaciones con el dispositivo
@@ -34,7 +43,7 @@ public:
     //--//MEDIDAS CON FILTRO COMPLEMENTARIO
     float angX(); //Devuelve el angulo en el eje x
     float angY(); //Devuelve el angulo en el eje y
-    float angZ(); //Devuelve el angulo en el eje y
+    float angZ(); //Devuelve el angulo en el eje z (Solo funciona con el accelerometro plano)
     float VelAngX(); //Devuelve la velocidad angular en el eje x (º/s)
     float VelAngY(); //Devuelve la velocidad angular en el eje y (º/s)
     //--//MEDIDAS SIN FILTRO
